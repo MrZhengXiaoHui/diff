@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        这是container
+    </div>
+</body>
+<script src="./diff.js"></script>
+<script>
+    var vnode1 = h('h1', {}, 'aaa');
+    var vnode2 = h('ul', {}, [h('li', {}, 'a'), h('li', {}, 'b'), h('li', {}, 'c')]);
+    // 获取到真实的dom节点
+    var container = document.getElementById('container')
+    patch(container, vnode1);
+
+    var vnode3 = h('div', {}, 'bbb');
+    // patch(container, vnode3)
+
+    // patch(container, vnode2)
+
+    // var vnode4 = h('ul', {}, [
+    //     h('li', { key: 'a' }, 'a'),
+    //     h('li', { key: 'b' }, 'b'),
+    //     h('li', { key: 'c' }, 'c')
+    // ]);
+    // // console.log(vnode4)
+    // patch(vnode1, vnode4)
+
+    var vnode5 = h('ul', {}, [
+        h('li', { key: 'b' }, 'b'),
+        h('li', { key: 'c' }, 'c'),
+        h('li', { key: 'a' }, 'a'),
+        h('li', { key: 'd' }, 'd'),
+    ]);
+    patch(vnode1, vnode5)
+
+    // var vnode6 = h('ul', {}, [
+    //     h('li', { key: 'c' }, 'c'),
+    //     h('li', { key: 'b' }, 'b'),
+    //     h('li', { key: 'd' }, 'd'),
+    //     h('li', { key: 'a' }, 'a')
+    // ]);
+    // patch(vnode5, vnode6)
+
+    var vnode7 = h('ul', {}, [
+        h('li', { key: 'c' }, 'c'),
+        h('li', { key: 'b' }, 'b'),
+        h('li', { key: 'd' }, 'd')
+    ]);
+    patch(vnode5, vnode7)
+</script>
+
+</html>
